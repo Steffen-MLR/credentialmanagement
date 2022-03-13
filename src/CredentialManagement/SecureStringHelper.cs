@@ -1,14 +1,13 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.Security;
 
 namespace CredentialManagement
 {
-    [SuppressUnmanagedCodeSecurity]
-    internal static class SecureStringHelper
+    //[SuppressUnmanagedCodeSecurity]
+    public static class SecureStringHelper
     {
         // Methods
-        internal static unsafe SecureString CreateSecureString(string plainString)
+        public static unsafe SecureString CreateSecureString(string plainString)
         {
             SecureString str;
             if (string.IsNullOrEmpty(plainString))
@@ -24,7 +23,7 @@ namespace CredentialManagement
             return str;
         }
 
-        internal static string CreateString(SecureString secureString)
+        public static string CreateString(SecureString secureString)
         {
             string str;
             IntPtr zero = IntPtr.Zero;

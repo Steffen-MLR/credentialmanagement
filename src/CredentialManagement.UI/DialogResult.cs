@@ -1,4 +1,4 @@
-﻿namespace CredentialManagement
+﻿namespace CredentialManagement.UI
 {
     public enum DialogResult
     {

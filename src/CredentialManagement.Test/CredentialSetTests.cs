@@ -9,13 +9,13 @@ namespace CredentialManagement.Test
         [TestMethod]
         public void CredentialSet_Create()
         {
-            new CredentialSet();
+            _ = new CredentialSet();
         }
 
         [TestMethod]
         public void CredentialSet_Create_WithTarget()
         {
-            new CredentialSet("target");
+            _ = new CredentialSet("target");
         }
 
         [TestMethod]
@@ -27,7 +27,7 @@ namespace CredentialManagement.Test
         [TestMethod]
         public void CredentialSet_Load()
         {
-            Credential credential = new Credential
+            Credential credential = new()
             {
                 Username = "username",
                 Password = "password",
@@ -36,7 +36,7 @@ namespace CredentialManagement.Test
             };
             credential.Save();
 
-            CredentialSet set = new CredentialSet();
+            CredentialSet set = new ();
             set.Load();
 
             credential.Delete();
@@ -47,7 +47,7 @@ namespace CredentialManagement.Test
         [TestMethod]
         public void CredentialSet_Load_ShouldReturn_Self()
         {
-            CredentialSet set = new CredentialSet();
+            CredentialSet set = new ();
             set.Load();
 
             set.Dispose();
@@ -56,7 +56,7 @@ namespace CredentialManagement.Test
         [TestMethod]
         public void CredentialSet_Load_With_TargetFilter()
         {
-            Credential credential = new Credential
+            Credential credential = new ()
             {
                 Username = "filteruser",
                 Password = "filterpassword",
@@ -64,7 +64,7 @@ namespace CredentialManagement.Test
             };
             credential.Save();
 
-            CredentialSet set = new CredentialSet("filtertarget");
+            CredentialSet set = new ("filtertarget");
             set.Load();
             set.Dispose();
         }
