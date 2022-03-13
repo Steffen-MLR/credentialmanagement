@@ -1,8 +1,7 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using System.Security;
 
-namespace CredentialManagement
+namespace CredentialManagement.UI
 {
     public abstract class BaseCredentialsPrompt : ICredentialsPrompt
     {

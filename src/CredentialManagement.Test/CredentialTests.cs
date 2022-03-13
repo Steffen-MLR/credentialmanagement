@@ -41,19 +41,11 @@ namespace CredentialManagement.Test
         {
             new Credential().Dispose();
         }
-        [TestMethod]
-        [ExpectedException(typeof(ObjectDisposedException))]
-        public void Credential_ShouldThrowObjectDisposedException()
-        {
-            Credential disposed = new Credential {Password = "password"};
-            disposed.Dispose();
-            disposed.Username = "username";
-        }
 
         [TestMethod]
         public void Credential_Save()
         {
-            Credential saved = new Credential("username", "password", "target", CredentialType.Generic);
+            Credential saved = new ("username", "password", "target", CredentialType.Generic);
             saved.PersistanceType = PersistanceType.LocalComputer;
             saved.Save().ShouldBeTrue();
         }
@@ -68,18 +60,18 @@ namespace CredentialManagement.Test
         [TestMethod]
         public void Credential_Delete_NullTerminator()
         {
-            Credential credential = new Credential((string)null, (string)null, "\0", CredentialType.None);
-            credential.Description = (string)null;
+            Credential credential = new (null, null, "\0", CredentialType.None);
+            credential.Description = null;
             credential.Delete().ShouldBeFalse();
         }
        
         [TestMethod]
         public void Credential_Load()
         {
-            Credential setup = new Credential("username", "password", "target", CredentialType.Generic);
+            Credential setup = new ("username", "password", "target", CredentialType.Generic);
             setup.Save();
 
-            Credential credential = new Credential {Target = "target", Type = CredentialType.Generic };
+            Credential credential = new () {Target = "target", Type = CredentialType.Generic };
             credential.Load().ShouldBeTrue();
 
             credential.Username.ShouldNotBeEmpty();
@@ -94,7 +86,7 @@ namespace CredentialManagement.Test
         {
             new Credential { Username = "username", Password = "password", Target = "target" }.Save();
             
-            Credential existingCred = new Credential {Target = "target"};
+            Credential existingCred = new () {Target = "target"};
             existingCred.Exists().ShouldBeTrue();
             
             existingCred.Delete();

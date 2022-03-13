@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using CredentialManagement.UI;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Text;
 
@@ -12,7 +13,7 @@ namespace CredentialManagement.Test
         [ClassInitialize]
         public static void Initialize(TestContext context)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new ();
             for (int i = 0; i < 50000; i++)
             {
                 sb.Append('A');
@@ -30,7 +31,7 @@ namespace CredentialManagement.Test
         [TestMethod]
         public void VistaPrompt_Create_ShouldNotBeNull()
         {
-            new VistaPrompt();
+            _ = new VistaPrompt();
         }
 
         [TestMethod]
@@ -128,7 +129,7 @@ namespace CredentialManagement.Test
             prompt.Dispose();
         }
 
-        private VistaPrompt GetDefaultPrompt()
+        private static VistaPrompt GetDefaultPrompt()
         {
             return new VistaPrompt();
         }

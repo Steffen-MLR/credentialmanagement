@@ -1,9 +1,8 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace CredentialManagement
+namespace CredentialManagement.UI
 {
     public class VistaPrompt: BaseCredentialsPrompt
     {
@@ -151,7 +150,8 @@ namespace CredentialManagement
                                                                        passwordBuffer, ref maxPassword);
             if (result)
             {
-                NativeMethods.CoTaskMemFree(outCredBuffer);
+                //NativeMethods.CoTaskMemFree(outCredBuffer);
+                Marshal.FreeCoTaskMem(outCredBuffer);
 
                 Username = usernameBuffer.ToString();
                 Password = passwordBuffer.ToString();

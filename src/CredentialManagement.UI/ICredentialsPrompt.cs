@@ -1,7 +1,6 @@
-﻿using System;
-using System.Security;
+﻿using System.Security;
 
-namespace CredentialManagement
+namespace CredentialManagement.UI
 {
     interface ICredentialsPrompt: IDisposable
     {
